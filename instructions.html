@@ -1,0 +1,53 @@
+/*
+
+Questions
+1. which are the processes i have to follow? when i open the code that Udacity provides, there is a main page with 4 sub web pages (Build Your Own 2048!, Website Performance Optimization, Mobile Web Development and Cam's Pizzeria). Do i have to optimize the 5 of them?
+
+2. do i have to personalize them with my own content? or i can leave them just like they are?
+
+3. how or where do i describe all the steps involved to optimize them so that teachers get the right information?
+
+4. the README file confuse me. What i have to describe to properly run the app? its just an index.html.
+
+5. my last doubt is about the frame rate optimization. Or i skip the video, or i didn't read any doc about how to perform frame rate optimization. Information about this step would be appreciated.
+
+
+Answers
+1. You want to make all of the pages load quickly enough to get good scores on the google insights speed test and you want to make the pizza page have good framerate when scrolling and resizing pizzas.  Framerate is less about actual framerate you see in the dev tools and more about reducing the numbers they measure in the javascript console.  Assume that 60 fps = around 16ms.  You can get a whole lot lower if you try, but 1,000ms / 60frames = 16.7ms per frame which is the stated goal.
+
+2. I don't think you need to personalize it.  I didn't.
+
+3. In the code notes anywhere you made a change would be a good place, and possibly also in your readme as well.
+
+4. In the readme, state which html file to load.. if there are any special concerns such as browsers you know don't work.. maybe changes you made.. etc.  A super simple readme is still a readme.
+
+5. The major thing here is to look at the pizza page's javascript file and figure out what might be slowing it down.  When you scroll or resize pizzas the console will spit out some stats in ms.  Try to get those numbers as small as possible.  By far the biggest thing is to try to reduce the amount of work being done in the loops unnecessarily.
+*/
+
+
+1. Create the DOM tree
+2. Create the CSSOM tree
+3. Create the render tree
+4.
+
+
+Part 1 of Project:
+Use Page Speed Insights for index.html
+Mobile and Desktop must be at least 90. .
+
+*** return gulp.src('./views/js/*.js') (to view folders within folders) ***
+
+Part 2 of Project:
+Content Efficiency for pizza.html
+(You can use gulp.js)!!!
+-- Fix frames per second for pizza.html
+-- Fix page speed insights for only index.html
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet>
+
+<script src=http://www.google-analytics.com/analytics.js></script>
+
+
+For Frames Per Second:
+
+Keep an eye on the console as you scroll around and resize pizzas.  It spits out the information you need to measure the current time to render a frames because the javascript has some helper stuff built in.  Once you see that and know how to check it, you will want to look at the javascript for anything you can improve the speed on, especially the loops.  Is everything being done inside of the loop over and over really necessary to repeat?  http://jsperf.com/ is also a very useful site when trying to compare 2 methods to do something and most of the things you would check someone else already made a jsPerf for.
